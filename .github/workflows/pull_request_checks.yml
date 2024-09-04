@@ -1,0 +1,20 @@
+name: "Pull Request Checks"
+
+on:
+  pull_request:
+
+jobs:
+  ##
+  # validation
+  ##
+
+  validate_pr_title:
+    name: "Validate PR Title"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "🛎 Checkout"
+        uses: actions/checkout@v4
+      - name: "🔧 Setup"
+        uses: ./.github/actions/use-dependencies
+      - name: "✅ Validate"
+        run: echo ${{ github.event.pull_request.title }} | commitlint lint
