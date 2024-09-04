@@ -1,0 +1,7 @@
+baseURL: https://example.org/
+languageCode: en-us
+params:
+  BookSection: 'vips'
+  subtitle: A set of proposals to enrich the Voi ecosystem.
+theme: hugo-book
+title: Voi Improvement Proposals (VIP)
