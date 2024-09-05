@@ -1,0 +1,14 @@
+name: "Use Dependencies"
+
+description: "Sets up Go and installs dependencies."
+
+runs:
+  using: "composite"
+  steps:
+    - name: "🦫 Setup Golang"
+      uses: actions/setup-go@v4
+      with:
+        go-version: '>=1.22.6'
+    - name: "📦 Install"
+      run: make install
+      shell: bash

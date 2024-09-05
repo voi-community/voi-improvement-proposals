@@ -1,0 +1,49 @@
+name: "Pull Request Checks"
+
+on:
+  pull_request:
+
+jobs:
+  ##
+  # validation
+  ##
+
+  validate_pr_title:
+    name: "Validate PR Title"
+    runs-on: ubuntu-latest
+    environment: development
+    steps:
+      - name: "🛎 Checkout"
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+      - name: "🔧 Setup"
+        uses: ./.github/actions/use-dependencies
+      - name: "✅ Validate"
+        run: echo ${{ github.event.pull_request.title }} | commitlint lint
+  ##
+  # build
+  ##
+
+  build:
+    name: "Build"
+    needs: [ validate_pr_title ]
+    runs-on: ubuntu-latest
+    environment: development
+    steps:
+      - name: "🛎 Checkout"
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+      - name: "🔧 Setup"
+        uses: ./.github/actions/use-dependencies
+      - name: "🏗️ Build"
+        env:
+          HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
+          HUGO_ENVIRONMENT: production
+        run: |
+          hugo \
+          --gc \
+          --minify

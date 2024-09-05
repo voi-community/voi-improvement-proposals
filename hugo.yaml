@@ -1,0 +1,8 @@
+baseURL: https://vips.voi.network/
+contentDir: vips
+languageCode: en-us
+params:
+  BookSection: '*'
+  subtitle: A set of proposals that describe technical specifications for the Voi community.
+theme: hugo-book
+title: Voi Improvement Proposals (VIP)

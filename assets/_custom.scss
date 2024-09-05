@@ -1,0 +1,32 @@
+$border-color: #dedede;
+
+.vip-header {
+  margin-bottom: 2rem;
+
+  &__link {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__meta {
+    border: 1px solid $border-color;
+    border-collapse: collapse;
+    text-align: left;
+    width: 100%;
+
+    td, th {
+      padding: 10px 15px;
+    }
+
+    th {
+      background-color: #f0f0f0;
+      border: 1px solid $border-color;
+    }
+
+    td {
+      border: 1px solid $border-color;
+      text-align: left;
+    }
+  }
+}

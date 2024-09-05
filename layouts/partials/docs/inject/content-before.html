@@ -1,0 +1,77 @@
+{{ $authors := .Page.Params.author }}
+{{ $parent := .Parent }}
+{{ $created := .Page.Params.created }}
+{{ $index := .Page.Params.index }}
+{{ $status := .Page.Params.status }}
+{{ if or (eq $index 0) (and $index (ne $index "")) }}
+{{ $category := .Parent.Title }}
+
+<div class="vip-header">
+  <h1>{{ printf "VIP-%04d: %s" .Page.Params.index .Page.Title }}</h1>
+
+  <h3>{{ .Page.Description }}</h3>
+
+  <table class="vip-header__meta">
+    <tbody>
+    <tr>
+      <th>Author(s)</th>
+      {{ if $authors }}
+        {{ $authorList := split $authors "," }}
+        {{ $numAuthors := len $authorList }}
+        <td>
+        {{ range $index, $author := $authorList }}
+          {{ $author := trim $author " " }}
+
+          <!-- add a comma unless it's the last item -->
+          {{ $comma := "" }}
+          {{ if lt $index (sub $numAuthors 1) }}
+            {{ $comma = printf "<span>,</span>" | safeHTML }}
+          {{ end }}
+
+          <!-- check if the author is an email format -->
+          {{ if strings.Contains $author "<" }}
+            {{ $name := replaceRE " <.*>" "" $author }}
+            {{ $email := replaceRE "^.*<" "" (replaceRE ">" "" $author) }}
+            <a class="vip-header__link" href="{{ printf "mailto:%s" $email }}">{{ $name }}</a>{{ $comma }}
+          {{ else if strings.Contains $author "(@" }} <!-- handle github username -->
+            {{ $name := replaceRE " \\(@.*\\)" "" $author }}
+            {{ $username := replaceRE "^.*\\(@" "" (replaceRE "\\)" "" $author) }}
+            <a class="vip-header__link" href="{{ printf "https://github.com/%s" $username }}">{{ $name }}</a>{{ $comma }}
+          {{ end }}
+        {{ end }}
+        </td>
+      {{ else }}
+        <td>-</td>
+      {{ end }}
+    </tr>
+
+    <tr>
+      <th>Status</th>
+      {{ if $status }}
+      <td>{{ $status }}</td>
+      {{ else }}
+      <td>Draft</td>
+      {{ end }}
+    </tr>
+
+    <tr>
+      <th>Category</th>
+      {{ if $category }}
+      <td>{{ $category }}</td>
+      {{ else }}
+      <td>-</td>
+      {{ end }}
+    </tr>
+
+    <tr>
+      <th>Created</th>
+      {{ if $created }}
+      <td>{{ $created }}</td>
+      {{ else }}
+      <td>-</td>
+      {{ end }}
+    </tr>
+    </tbody>
+  </table>
+</div>
+{{ end }}
