@@ -1,4 +1,5 @@
-{{ $author := .Page.Params.author }}
+{{ $authors := .Page.Params.author }}
+{{ $category := .Parent.Title }}
 {{ $created := .Page.Params.created }}
 {{ $index := .Page.Params.index }}
 {{ $status := .Page.Params.status }}
@@ -12,10 +13,33 @@
     <tbody>
     <tr>
       <th>Author(s)</th>
-      {{ if $author }}
-      <td>{{ $author }}</td>
+      {{ if $authors }}
+        {{ $authorList := split $authors "," }}
+        {{ $numAuthors := len $authorList }}
+        <td>
+        {{ range $index, $author := $authorList }}
+          {{ $author := trim $author " " }}
+
+          <!-- add a comma unless it's the last item -->
+          {{ $comma := "" }}
+          {{ if lt $index (sub $numAuthors 1) }}
+            {{ $comma = printf "<span>,</span>" | safeHTML }}
+          {{ end }}
+
+          <!-- check if the author is an email format -->
+          {{ if strings.Contains $author "<" }}
+            {{ $name := replaceRE " <.*>" "" $author }}
+            {{ $email := replaceRE "^.*<" "" (replaceRE ">" "" $author) }}
+            <a class="vip-header__link" href="{{ printf "mailto:%s" $email }}">{{ $name }}</a>{{ $comma }}
+          {{ else if strings.Contains $author "(@" }} <!-- handle github username -->
+            {{ $name := replaceRE " \\(@.*\\)" "" $author }}
+            {{ $username := replaceRE "^.*\\(@" "" (replaceRE "\\)" "" $author) }}
+            <a class="vip-header__link" href="{{ printf "https://github.com/%s" $username }}">{{ $name }}</a>{{ $comma }}
+          {{ end }}
+        {{ end }}
+        </td>
       {{ else }}
-      <td>-</td>
+        <td>-</td>
       {{ end }}
     </tr>
 
@@ -25,6 +49,15 @@
       <td>{{ $status }}</td>
       {{ else }}
       <td>Draft</td>
+      {{ end }}
+    </tr>
+
+    <tr>
+      <th>Category</th>
+      {{ if $category }}
+      <td>{{ $category }}</td>
+      {{ else }}
+      <td>-</td>
       {{ end }}
     </tr>
 
