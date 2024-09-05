@@ -1,0 +1,11 @@
+{{ range .Page.Sections }}
+  {{ $pages := where .Page.RegularPages "Type" "ne" "section" }}
+
+  <div class="vip-index-category">
+    <h3>
+      <a href="{{ .Permalink }}">{{ .Title }}</a> ({{ len $pages }})
+    </h3>
+
+    <p>{{ .Description }}</p>
+  </div>
+{{ end }}

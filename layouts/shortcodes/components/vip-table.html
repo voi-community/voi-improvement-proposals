@@ -1,0 +1,28 @@
+{{ $pages := where .Page.RegularPages "Type" "ne" "section" }}
+
+<table class="vip-table">
+  <thead>
+    <tr>
+      <th>Index</th>
+      <th>Title</th>
+      <th>Authors</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  {{ range $pages }}
+    <tr>
+      <td>
+        <a href="{{ .Permalink }}">{{ .Params.index }}</a>
+      </td>
+
+      <td>{{ .Title }}</td>
+
+      <td>{{ partial "authors" (dict "authors" .Params.author) }}</td>
+
+      <td>{{ .Params.status }}</td>
+    </tr>
+  {{ end }}
+  </tbody>
+</table>
