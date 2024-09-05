@@ -1,0 +1,42 @@
+{{ $author := .Page.Params.author }}
+{{ $created := .Page.Params.created }}
+{{ $index := .Page.Params.index }}
+{{ $status := .Page.Params.status }}
+{{ if or (eq $index 0) (and $index (ne $index "")) }}
+<div class="vip-header">
+  <h1>{{ printf "VIP-%04d: %s" .Page.Params.index .Page.Title }}</h1>
+
+  <h3>{{ .Page.Description }}</h3>
+
+  <table class="vip-header__meta">
+    <tbody>
+    <tr>
+      <th>Author(s)</th>
+      {{ if $author }}
+      <td>{{ $author }}</td>
+      {{ else }}
+      <td>-</td>
+      {{ end }}
+    </tr>
+
+    <tr>
+      <th>Status</th>
+      {{ if $status }}
+      <td>{{ $status }}</td>
+      {{ else }}
+      <td>Draft</td>
+      {{ end }}
+    </tr>
+
+    <tr>
+      <th>Created</th>
+      {{ if $created }}
+      <td>{{ $created }}</td>
+      {{ else }}
+      <td>-</td>
+      {{ end }}
+    </tr>
+    </tbody>
+  </table>
+</div>
+{{ end }}

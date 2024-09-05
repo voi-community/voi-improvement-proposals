@@ -1,0 +1,13 @@
+<!--
+  Partial to generate the menu title.
+  Accepts Page as context.
+-->
+{{ $title := "" }}
+
+{{ if .Params.is_category }}
+{{ $title = .Title }}
+{{ else }}
+{{ $title = printf "%04d: %s" .Params.index .Title }} <!-- ####: Page Title -->
+{{ end }}
+
+{{ return $title }}
