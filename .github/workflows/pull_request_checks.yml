@@ -15,6 +15,9 @@ jobs:
     steps:
       - name: "🛎 Checkout"
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
       - name: "🔧 Setup"
         uses: ./.github/actions/use-dependencies
       - name: "✅ Validate"
@@ -31,6 +34,9 @@ jobs:
     steps:
       - name: "🛎 Checkout"
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
       - name: "🔧 Setup"
         uses: ./.github/actions/use-dependencies
       - name: "🏗️ Build"
@@ -40,5 +46,4 @@ jobs:
         run: |
           hugo \
           --gc \
-          --minify \
-          --baseURL "${{ steps.pages.outputs.base_url }}/"
+          --minify
