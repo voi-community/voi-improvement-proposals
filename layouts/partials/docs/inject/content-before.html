@@ -1,6 +1,7 @@
 {{ $authors := .Page.Params.author }}
 {{ $parent := .Parent }}
 {{ $created := .Page.Params.created }}
+{{ $discussion_url := .Page.Params.discussion_url }}
 {{ $index := .Page.Params.index }}
 {{ $status := .Page.Params.status }}
 {{ if or (eq $index 0) (and $index (ne $index "")) }}
@@ -32,11 +33,11 @@
           {{ if strings.Contains $author "<" }}
             {{ $name := replaceRE " <.*>" "" $author }}
             {{ $email := replaceRE "^.*<" "" (replaceRE ">" "" $author) }}
-            <a class="vip-header__link" href="{{ printf "mailto:%s" $email }}">{{ $name }}</a>{{ $comma }}
+            <a class="vip-header__link" href="{{ printf "mailto:%s" $email }}" target="_blank">{{ $name }}</a>{{ $comma }}
           {{ else if strings.Contains $author "(@" }} <!-- handle github username -->
             {{ $name := replaceRE " \\(@.*\\)" "" $author }}
             {{ $username := replaceRE "^.*\\(@" "" (replaceRE "\\)" "" $author) }}
-            <a class="vip-header__link" href="{{ printf "https://github.com/%s" $username }}">{{ $name }}</a>{{ $comma }}
+            <a class="vip-header__link" href="{{ printf "https://github.com/%s" $username }}" target="_blank">{{ $name }}</a>{{ $comma }}
           {{ end }}
         {{ end }}
         </td>
@@ -71,6 +72,15 @@
       <td>-</td>
       {{ end }}
     </tr>
+
+    {{ if $discussion_url }}
+    <tr>
+      <th>Discussion URL</th>
+      <td>
+        <a class="vip-header__link" href="{{ $discussion_url }}" target="_blank">{{ $discussion_url }}</a>
+      </td>
+    </tr>
+    {{ end }}
     </tbody>
   </table>
 </div>

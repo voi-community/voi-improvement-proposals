@@ -74,9 +74,9 @@ In order to make updates, a feature branch is made from the `main` branch and wh
 
 ### 2.2. Merge to main
 
-1. Create a branch from the `main` branch and use the convention: `<feat|fix|ci>/name-of-issue`.
+1. Create a branch from the `main` branch and use the convention: `vip-<category>-<index>-title`, e.g. `vip-03-0200-fungible-tokens`.
 2. Once the code is ready to be merged into `main`, open a pull request.
-> ⚠️**NOTE:** The title must conform to the conventional commit message format outlined above. This is to ensure the merge commit to the main branch is picked up by the CI and creates a release (if necessary).
+> ⚠️ **NOTE:** The pull request title must be in the format: `VIP-##-####: Title`, e.g. `VIP-03-0200: Fungible Tokens`. Ensure the title is capitalized.
 3. To merge the PR, use the "Squash and merge" option. This is to keep the commit history clean and keep the commits on `main` with a 1:1 ratio with previous PRs.
 
 <sup>[Back to top ^](#table-of-contents)</sup>
