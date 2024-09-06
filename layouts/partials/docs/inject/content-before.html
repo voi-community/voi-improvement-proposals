@@ -1,66 +1,69 @@
 {{ $authors := .Page.Params.author }}
 {{ $parent := .Parent }}
 {{ $created := .Page.Params.created }}
-{{ $discussion_url := .Page.Params.discussion_url }}
+{{ $discussion_to := .Page.Params.discussion_to }}
 {{ $index := .Page.Params.index }}
 {{ $status := .Page.Params.status }}
-{{ if or (eq $index 0) (and $index (ne $index "")) }}
-{{ $category := .Parent.Title }}
 
-<div class="vip-header">
-  <h1>{{ printf "VIP-%04d: %s" .Page.Params.index .Page.Title }}</h1>
+{{ if not .Page.Params.is_category }} <!-- exclude category files -->
+  {{ if or (eq $index 0) (and $index (ne $index "")) }}
+    {{ $category := printf "%02d (%s)" .Parent.Params.index .Parent.Title }}
 
-  <h3>{{ .Page.Description }}</h3>
+    <div class="vip-header">
+      <h1>{{ printf "VIP-%02d-%04d: %s" .Parent.Params.index .Page.Params.index .Page.Title }}</h1>
 
-  <table class="vip-table">
-    <tbody>
-    <tr>
-      <th>Author(s)</th>
-      {{ if $authors }}
-        <td>
-          {{ partial "authors" (dict "authors" $authors) }}
-        </td>
-      {{ else }}
-        <td>-</td>
-      {{ end }}
-    </tr>
+      <h3>{{ .Page.Description }}</h3>
 
-    <tr>
-      <th>Status</th>
-      {{ if $status }}
-      <td>{{ $status }}</td>
-      {{ else }}
-      <td>Draft</td>
-      {{ end }}
-    </tr>
+      <table class="vip-table">
+        <tbody>
+        <tr>
+          <th>Author(s)</th>
+          {{ if $authors }}
+            <td>
+              {{ partial "authors" (dict "authors" $authors) }}
+            </td>
+          {{ else }}
+            <td>-</td>
+          {{ end }}
+        </tr>
 
-    <tr>
-      <th>Category</th>
-      {{ if $category }}
-      <td>{{ $category }}</td>
-      {{ else }}
-      <td>-</td>
-      {{ end }}
-    </tr>
+        <tr>
+          <th>Status</th>
+          {{ if $status }}
+          <td>{{ $status }}</td>
+          {{ else }}
+          <td>Draft</td>
+          {{ end }}
+        </tr>
 
-    <tr>
-      <th>Created</th>
-      {{ if $created }}
-      <td>{{ $created }}</td>
-      {{ else }}
-      <td>-</td>
-      {{ end }}
-    </tr>
+        <tr>
+          <th>Category</th>
+          {{ if $category }}
+          <td>{{ $category }}</td>
+          {{ else }}
+          <td>-</td>
+          {{ end }}
+        </tr>
 
-    {{ if $discussion_url }}
-    <tr>
-      <th>Discussion URL</th>
-      <td>
-        <a class="vip-header__link" href="{{ $discussion_url }}" target="_blank">{{ $discussion_url }}</a>
-      </td>
-    </tr>
-    {{ end }}
-    </tbody>
-  </table>
-</div>
+        <tr>
+          <th>Created</th>
+          {{ if $created }}
+          <td>{{ $created }}</td>
+          {{ else }}
+          <td>-</td>
+          {{ end }}
+        </tr>
+
+        {{ if $discussion_to }}
+        <tr>
+          <th>Discussion To</th>
+          <td>
+            <a class="vip-header__link" href="{{ $discussion_to }}" target="_blank">{{ $discussion_to }}</a>
+          </td>
+        </tr>
+        {{ end }}
+        </tbody>
+      </table>
+    </div>
+  {{ end }}
 {{ end }}

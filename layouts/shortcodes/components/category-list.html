@@ -3,7 +3,7 @@
 
   <div class="vip-index-category">
     <h3>
-      <a href="{{ .Permalink }}">{{ .Title }}</a> ({{ len $pages }})
+      <a href="{{ .Permalink }}">{{ printf "%02d: %s" .Page.Params.index .Page.Title }}</a> ({{ len $pages }})
     </h3>
 
     <p>{{ .Description }}</p>

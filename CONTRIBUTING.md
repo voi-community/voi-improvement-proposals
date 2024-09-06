@@ -58,7 +58,7 @@ The subject contains a succinct description of the change:
 * use the present tense ("Add feature" not "Added feature")
 * use the imperative mood ("Move cursor to..." not "Moves cursor to...")
 * don't capitalise the first letter
-* don't use a fullstop (.) at the end. <- Not this
+* don't use fullstops (.) at the end. <- Not this
 
 <sup>[Back to top ^](#table-of-contents)</sup>
 
@@ -75,8 +75,7 @@ In order to make updates, a feature branch is made from the `main` branch and wh
 ### 2.2. Merge to main
 
 1. Create a branch from the `main` branch and use the convention: `vip-<category>-<index>-title`, e.g. `vip-03-0200-fungible-tokens`.
-2. Once the code is ready to be merged into `main`, open a pull request.
-> ⚠️ **NOTE:** The pull request title must be in the format: `VIP-##-####: Title`, e.g. `VIP-03-0200: Fungible Tokens`. Ensure the title is capitalized.
+2. Once the code is ready to be merged into `main`, open a pull request. The pull request title must be in the format: `VIP-##-####: Title`, e.g. `VIP-03-0200: Fungible Tokens`, and the title **MUST** be capitalized. You must also add the "draft" GitHub label to indicate this VIP is ready to be reviewed.
 3. To merge the PR, use the "Squash and merge" option. This is to keep the commit history clean and keep the commits on `main` with a 1:1 ratio with previous PRs.
 
 <sup>[Back to top ^](#table-of-contents)</sup>

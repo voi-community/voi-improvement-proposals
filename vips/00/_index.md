@@ -1,11 +1,12 @@
 ---
-title: 00-Meta
+index: 0
+title: Meta
 is_category: true
 weight: 1
 bookCollapseSection: true
 ---
 
-# {{< pages/title >}}
+# {{< pages/category-title >}}
 
 The Meta category provides guidelines, procedures, changes to processes or information to the Voi community.
 

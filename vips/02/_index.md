@@ -1,11 +1,12 @@
 ---
-title: 02-Interface
+index: 2
+title: Interface
 is_category: true
 weight: 3
 bookCollapseSection: true
 ---
 
-# {{< pages/title >}}
+# {{< pages/category-title >}}
 
 Improvements around client API/RPC specifications and also certain language-level standards like method names and contract ABIs.
 
