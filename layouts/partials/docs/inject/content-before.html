@@ -1,77 +1,69 @@
 {{ $authors := .Page.Params.author }}
 {{ $parent := .Parent }}
 {{ $created := .Page.Params.created }}
+{{ $discussion_to := .Page.Params.discussion_to }}
 {{ $index := .Page.Params.index }}
 {{ $status := .Page.Params.status }}
-{{ if or (eq $index 0) (and $index (ne $index "")) }}
-{{ $category := .Parent.Title }}
 
-<div class="vip-header">
-  <h1>{{ printf "VIP-%04d: %s" .Page.Params.index .Page.Title }}</h1>
+{{ if not .Page.Params.is_category }} <!-- exclude category files -->
+  {{ if or (eq $index 0) (and $index (ne $index "")) }}
+    {{ $category := printf "%02d (%s)" .Parent.Params.index .Parent.Title }}
 
-  <h3>{{ .Page.Description }}</h3>
+    <div class="vip-header">
+      <h1>{{ printf "VIP-%02d-%04d: %s" .Parent.Params.index .Page.Params.index .Page.Title }}</h1>
 
-  <table class="vip-header__meta">
-    <tbody>
-    <tr>
-      <th>Author(s)</th>
-      {{ if $authors }}
-        {{ $authorList := split $authors "," }}
-        {{ $numAuthors := len $authorList }}
-        <td>
-        {{ range $index, $author := $authorList }}
-          {{ $author := trim $author " " }}
+      <h3>{{ .Page.Description }}</h3>
 
-          <!-- add a comma unless it's the last item -->
-          {{ $comma := "" }}
-          {{ if lt $index (sub $numAuthors 1) }}
-            {{ $comma = printf "<span>,</span>" | safeHTML }}
+      <table class="vip-table">
+        <tbody>
+        <tr>
+          <th>Author(s)</th>
+          {{ if $authors }}
+            <td>
+              {{ partial "authors" (dict "authors" $authors) }}
+            </td>
+          {{ else }}
+            <td>-</td>
           {{ end }}
+        </tr>
 
-          <!-- check if the author is an email format -->
-          {{ if strings.Contains $author "<" }}
-            {{ $name := replaceRE " <.*>" "" $author }}
-            {{ $email := replaceRE "^.*<" "" (replaceRE ">" "" $author) }}
-            <a class="vip-header__link" href="{{ printf "mailto:%s" $email }}">{{ $name }}</a>{{ $comma }}
-          {{ else if strings.Contains $author "(@" }} <!-- handle github username -->
-            {{ $name := replaceRE " \\(@.*\\)" "" $author }}
-            {{ $username := replaceRE "^.*\\(@" "" (replaceRE "\\)" "" $author) }}
-            <a class="vip-header__link" href="{{ printf "https://github.com/%s" $username }}">{{ $name }}</a>{{ $comma }}
+        <tr>
+          <th>Status</th>
+          {{ if $status }}
+          <td>{{ $status }}</td>
+          {{ else }}
+          <td>Draft</td>
           {{ end }}
+        </tr>
+
+        <tr>
+          <th>Category</th>
+          {{ if $category }}
+          <td>{{ $category }}</td>
+          {{ else }}
+          <td>-</td>
+          {{ end }}
+        </tr>
+
+        <tr>
+          <th>Created</th>
+          {{ if $created }}
+          <td>{{ $created }}</td>
+          {{ else }}
+          <td>-</td>
+          {{ end }}
+        </tr>
+
+        {{ if $discussion_to }}
+        <tr>
+          <th>Discussion To</th>
+          <td>
+            <a class="vip-header__link" href="{{ $discussion_to }}" target="_blank">{{ $discussion_to }}</a>
+          </td>
+        </tr>
         {{ end }}
-        </td>
-      {{ else }}
-        <td>-</td>
-      {{ end }}
-    </tr>
-
-    <tr>
-      <th>Status</th>
-      {{ if $status }}
-      <td>{{ $status }}</td>
-      {{ else }}
-      <td>Draft</td>
-      {{ end }}
-    </tr>
-
-    <tr>
-      <th>Category</th>
-      {{ if $category }}
-      <td>{{ $category }}</td>
-      {{ else }}
-      <td>-</td>
-      {{ end }}
-    </tr>
-
-    <tr>
-      <th>Created</th>
-      {{ if $created }}
-      <td>{{ $created }}</td>
-      {{ else }}
-      <td>-</td>
-      {{ end }}
-    </tr>
-    </tbody>
-  </table>
-</div>
+        </tbody>
+      </table>
+    </div>
+  {{ end }}
 {{ end }}

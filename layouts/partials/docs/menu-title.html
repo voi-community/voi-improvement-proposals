@@ -5,7 +5,7 @@
 {{ $title := "" }}
 
 {{ if .Params.is_category }}
-{{ $title = .Title }}
+{{ $title = printf "%02d: %s" .Params.index .Title }}
 {{ else }}
 {{ $title = printf "%04d: %s" .Params.index .Title }} <!-- ####: Page Title -->
 {{ end }}

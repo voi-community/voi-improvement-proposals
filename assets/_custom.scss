@@ -2,31 +2,49 @@ $border-color: #dedede;
 
 .vip-header {
   margin-bottom: 2rem;
+}
 
-  &__link {
-    display: inline-block;
-    margin: 0;
-    padding: 0;
+table.vip-table {
+  border: 1px solid $border-color;
+  border-collapse: collapse;
+  display: table;
+  text-align: left;
+  width: 100%;
+
+  tbody,
+  thead {
+    width: 100%;
   }
 
-  &__meta {
+  td, th {
+    padding: 10px 15px;
+  }
+
+  th {
+    background-color: #f0f0f0;
     border: 1px solid $border-color;
-    border-collapse: collapse;
+  }
+
+  td {
+    border: 1px solid $border-color;
     text-align: left;
-    width: 100%;
 
-    td, th {
-      padding: 10px 15px;
-    }
+    &.vip-table__status {
+      &--active {
+        background-color: #dae8fc;
+      }
 
-    th {
-      background-color: #f0f0f0;
-      border: 1px solid $border-color;
-    }
+      &--deprecated {
+        background-color: #f8cecc;
+      }
 
-    td {
-      border: 1px solid $border-color;
-      text-align: left;
+      &--draft {
+        background-color: #fff2cc;
+      }
+
+      &--living {
+        background-color: #d5e8d4;
+      }
     }
   }
 }

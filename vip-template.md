@@ -2,9 +2,10 @@
 index: <The suggested VIP index.> # Required.
 title: <The VIP title in a few words, not a complete sentence.> # Required.
 description: <Description is one full (short) sentence.> # Required.
-author: <a comma separated list of the author's or authors' name + GitHub username (in parenthesis), or name and email (in angle brackets). Example, FirstName LastName (@GitHubUsername), FirstName LastName <foo@bar.com>, FirstName (@GitHubUsername) and GitHubUsername (@GitHubUsername).> # Required.
+author: <A comma separated list of the author's or authors' name + GitHub username (in parenthesis), or name and email (in angle brackets). Example, FirstName LastName (@GitHubUsername), FirstName LastName <foo@bar.com>, FirstName (@GitHubUsername) and GitHubUsername (@GitHubUsername).> # Required.
 status: Draft # Required.
-created: <date created on, in ISO 8601 (yyyy-mm-dd) format.> # Required.
+created: <The date the VIP was created on, in ISO 8601 (yyyy-mm-dd) format.> # Required.
+discussion_to: <A URL to where for the discussion of this VIP.> # Optional, but recommended.
 requires: <VIP reference(s).> # Only required when you reference a VIP in the `Specification` section. Otherwise, remove this field.
 ---
 

@@ -1,0 +1,22 @@
+{{ $authorList := split .authors "," }}
+{{ $numAuthors := len $authorList }}
+{{ range $index, $author := $authorList }}
+  {{ $author := trim $author " " }}
+
+  <!-- add a comma unless it's the last item -->
+  {{ $comma := "" }}
+  {{ if lt $index (sub $numAuthors 1) }}
+    {{ $comma = printf "<span>,</span>" | safeHTML }}
+  {{ end }}
+
+  <!-- check if the author is an email format -->
+  {{ if strings.Contains $author "<" }}
+    {{ $name := replaceRE " <.*>" "" $author }}
+    {{ $email := replaceRE "^.*<" "" (replaceRE ">" "" $author) }}
+    <a href="{{ printf "mailto:%s" $email }}" target="_blank">{{ $name }}</a>{{ $comma }}
+  {{ else if strings.Contains $author "(@" }} <!-- handle github username -->
+    {{ $name := replaceRE " \\(@.*\\)" "" $author }}
+    {{ $username := replaceRE "^.*\\(@" "" (replaceRE "\\)" "" $author) }}
+    <a href="{{ printf "https://github.com/%s" $username }}" target="_blank">{{ $name }}</a>{{ $comma }}
+  {{ end }}
+{{ end }}
