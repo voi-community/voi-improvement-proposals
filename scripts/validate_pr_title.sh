@@ -23,8 +23,8 @@ function main {
 
   title="${BASH_REMATCH[1]}"  # extract the title part
 
-  # check if the title is capitalized
-  if ! [[ "$title" =~ ^[A-Z][a-z]*( [A-Z][a-z]*)*$ ]]; then
+  # check if each word in the title is capitalized or in uppercase
+  if ! [[ "${title}" =~ ^([A-Z][a-z]*|[A-Z]+)(\ +([A-Z][a-z]*|[A-Z]+))*$ ]]; then
     printf "%b title \"%b\" is not capitalized \n" "${INFO_PREFIX}" "${title}"
 
     exit 1

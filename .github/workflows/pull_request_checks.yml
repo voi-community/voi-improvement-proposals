@@ -16,7 +16,7 @@ jobs:
       - name: "🛎 Checkout"
         uses: actions/checkout@v4
       - name: "✅ Validate"
-        run: ./scripts/validate_pr_title.sh ${{ github.event.pull_request.title }}
+        run: ./scripts/validate_pr_title.sh "${{ github.event.pull_request.title }}"
   ##
   # build
   ##
