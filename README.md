@@ -39,9 +39,9 @@ The VIP documentation is hosted [here][documentation].
 
 > ⚠️ **NOTE:** It is **RECOMMENDED** you read [VIP-00-0000][vip-00-0000] in order to understand the guidelines around VIPs.
 
-When you have decided on the category and the indexing of your proposed VIP, copy the [vip-template.md](./vip-template.md) into the `vips/##` directory (where ## represents the category number referenced in [VIP-00-0000][vip-00-0000]).
+When you have decided on the category and the indexing of your proposed VIP, copy the [vip-template.md](./vip-template.md) into the `vips/<category>/<index>/` directory (where category is the category index and index is the VIP index).
 
-Rename your file to the index you have chosen. This **MUST** use the form `####.md` and use padded zeroes if your index is below 1000, e.g. if your index is 27, the file to create will be `0027.md`.
+> ⚠️ **NOTE:** Your VIP index directory **MUST** use padded zeroes if your index is below 1000, e.g. if your index is 27, the directory to create will be `0027/`..
 
 <sup>[Back to top ^][table-of-contents]</sup>
 
@@ -144,4 +144,4 @@ Please refer to the [LICENSE][license] file.
 [localhost]: http://localhost:8080
 [make]: https://www.gnu.org/software/make/
 [table-of-contents]: #table-of-contents
-[vip-00-0000]: ./vips/00/0000.md
+[vip-00-0000]: ./vips/00/0000/index.md
