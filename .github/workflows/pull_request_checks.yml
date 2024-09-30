@@ -15,8 +15,13 @@ jobs:
     steps:
       - name: "🛎 Checkout"
         uses: actions/checkout@v4
-      - name: "✅ Validate"
+      - name: "✅ Validate VIP Title"
+        if: ${{ github.event.pull_request.head.repo.fork == true }}
         run: ./scripts/validate_pr_title.sh "${{ github.event.pull_request.title }}"
+      - name: "✅ Validate With Commitlint"
+        if: ${{ github.event.pull_request.head.repo.fork == false }}
+        run: echo ${{ github.event.pull_request.title }} | npx commitlint
+
   ##
   # build
   ##
