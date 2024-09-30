@@ -1,6 +1,6 @@
 name: "Use Dependencies"
 
-description: "Checks if the dependencies have been cached with the hash of the all the .go files."
+description: "Checks if the Go binaries have been cached with the hash of the all the Makefile."
 
 runs:
   using: "composite"
@@ -13,9 +13,8 @@ runs:
       uses: actions/cache@v4
       id: cache-dependencies
       with:
-        path:  |
-          ~/.cache/go-build
-          ~/go/pkg
+        path: |
+          $GOPATH/bin
         key: ${{ runner.os }}-go-${{ hashFiles('Makefile') }}
     - name: "📦 Install"
       if: steps.cache-dependencies.outputs.cache-hit != 'true'
