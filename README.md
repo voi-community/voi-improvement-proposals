@@ -2,13 +2,14 @@
   Voi Improvement Proposals (VIP)
 </h1>
 
-### Table of contents
+### Table Of Contents
 
 * [1. Overview](#-1-overview)
 * [2. Documentation](#-2-documentation)
 * [3. Usage](#-3-usage)
-  - [3.1. Create A New VIP](#31-create-a-new-vip)
-  - [3.2. Open A PR](#32-open-a-pr)
+  - [3.1. Fork The Repo](#31-fork-the-repo)
+  - [3.2. Create A New VIP](#32-create-a-new-vip)
+  - [3.3. Open A PR](#33-open-a-pr)
 * [4. Development](#-4-development)
   - [4.1. Overview](#41-overview)
   - [4.2. Requirements](#42-requirements)
@@ -35,7 +36,13 @@ The VIP documentation is hosted [here][documentation].
 
 ## 🪄 3. Usage
 
-### 3.1. Create A New VIP
+### 3.1. Fork The Repo
+
+Before creating and submitting a VIP, you will need to [fork](https://github.com/voi-community/voi-improvement-proposals/fork) this repo.
+
+<sup>[Back to top ^][table-of-contents]</sup>
+
+### 3.2. Create A New VIP
 
 > ⚠️ **NOTE:** It is **RECOMMENDED** you read [VIP-00-0000][vip-00-0000] in order to understand the guidelines around VIPs.
 
@@ -45,9 +52,9 @@ When you have decided on the category and the indexing of your proposed VIP, cop
 
 <sup>[Back to top ^][table-of-contents]</sup>
 
-### 3.2. Open A PR
+### 3.3. Open A PR
 
-Once you are ready for the VIP to be reviewed and open for discussion, open a PR and ensure the PR title is in the format:
+Once you are ready for the VIP to be reviewed and open for discussion, open a PR from the forked repo against the `main` branch and ensure the PR title is in the format:
 
 ````text
 VIP-##-####: Title
