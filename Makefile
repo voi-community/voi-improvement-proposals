@@ -10,4 +10,4 @@ install:
 	@go install -tags extended github.com/gohugoio/hugo@v0.134.0
 
 start:
-	hugo server --buildDrafts --port 8080
+	hugo server --buildDrafts --port 8080 --disableFastRender
