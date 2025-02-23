@@ -1,7 +1,7 @@
 ---
 index: 26
 title: Verifiable Compact Identity Credential (VCIC)
-description: Verifiable Compact Identity Credential (VCIC) is a lightweight, identity-based credential standard that enables providers to securely prove their identity using a challenge-response mechanism.
+description: Verifiable Compact Identity Credential (VCIC) is a lightweight, identity-based credential specification that enables providers to securely prove their identity using a challenge-response mechanism.
 author: Kieran O'Neill (@kieranroneill)
 status: Draft
 created: 2025-02-23
@@ -58,10 +58,10 @@ where:
 
 The choice of signing algorithm is at the provider's discretion, but the provider **MUST** use one of the following algorithm types in order for a client to know the type and/or variant of the algorithm that was used to sign a message challenge.
 
-| ID        | Description                                                                                                                                                | Public Key Size |
-|-----------|------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|
-| `Ed25519` | The Ed25519 signing belongs to the EdDSA family of algorithms and uses a SHA-512 hash. It is fast and secure and is used for the creation of AVM accounts. | 32 bytes        |
-| `ES256K`  | The ECDSA algorithm using the secp256k1 curve and SHA-256 hashing, is strong & efficient and is used in the creation of EVM accounts.                      | 64 bytes        |
+| ID        | Description                                                                                                                                   | Public Key Size |
+|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------|-----------------|
+| `Ed25519` | Ed25519 belongs to the EdDSA family of algorithms and uses a SHA-512 hash. It is fast and secure and is used in the creation of AVM accounts. | 32 bytes        |
+| `ES256K`  | The ECDSA algorithm using the secp256k1 curve and SHA-256 hashing, is strong & efficient and is used in the creation of EVM accounts.         | 64 bytes        |
 
 > 💡 **TIP:** It is **RECOMMENDED** that the `Ed25519` algorithm is used due to its close affiliation with AVM accounts and its more compact size - the public key is 32 bytes compared to 64 bytes for `ES256K`.
 
