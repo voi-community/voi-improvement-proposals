@@ -10,7 +10,7 @@ requires: <VIP reference(s).> # Only required when you reference a VIP in the `S
 ---
 
 <!--
-  READ VIP-00-0000 (https://vips.voi.network/vips/00/0000/) BEFORE USING THIS TEMPLATE!
+  READ VIP-00-0000 (https://vips.voi.community/00/0000/) BEFORE USING THIS TEMPLATE!
 
   This is the suggested template for new VIPs. After you have filled in the requisite fields, please delete these comments.
 

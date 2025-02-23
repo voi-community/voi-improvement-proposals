@@ -1,10 +1,8 @@
 // utils
 import createLogger from './utils/createLogger.mjs';
 
-(() => {
-  const args = process.argv.slice(2);
+const validatePrTitle = (title) => {
   const logger = createLogger();
-  const title = args[0];
   let pattern;
 
   if (!title) {
@@ -13,7 +11,7 @@ import createLogger from './utils/createLogger.mjs';
     process.exit(1);
   }
 
-  pattern = /^VIP-[0-9]{2}-[0-9]{4}: (\d*[A-Z][a-zA-Z0-9]*|\d+[a-zA-Z0-9]*)( (\d*[A-Z][a-zA-Z0-9]*|\d+[a-zA-Z0-9]*))*$/;
+  pattern = /^VIP-\d{2}-\d{4}: (([A-Z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?][A-Za-z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]*) ?)+$/;
 
   if (!pattern.test(title)) {
     logger.error(`title "${title}" is invalid`);
@@ -24,4 +22,6 @@ import createLogger from './utils/createLogger.mjs';
   logger.success('title is valid!');
 
   process.exit(0);
-})();
+};
+
+validatePrTitle(process.argv.slice(2)[0]);
