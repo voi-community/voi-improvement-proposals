@@ -9,7 +9,7 @@
 
 {{ define "book-section-children" }}{{/* (dict "Section" .Section "CurrentPage" .CurrentPage) */}}
   <ul>
-    {{ range (where .Section.Pages "Params.bookhidden" "ne" true) }}
+    {{ range (sort (where .Section.Pages "Params.bookhidden" "ne" true) ".Params.index") }}
       {{ if .IsSection }}
         <li {{- if .Params.BookFlatSection }} class="book-section-flat" {{ end -}}>
           {{ template "book-page-link" (dict "Page" . "CurrentPage" $.CurrentPage) }}
@@ -28,7 +28,8 @@
   {{ $current := eq .CurrentPage .Page }}
   {{ $ancestor := .Page.IsAncestor .CurrentPage }}
 
-  {{ if .Page.Params.BookCollapseSection }}
+  {{ if .Page.Params.is_category }}
+    <!-- category -->
     <input type="checkbox" id="section-{{ md5 .Page }}" class="toggle" {{ if or $current $ancestor }}checked{{ end }} />
     <label for="section-{{ md5 .Page }}" class="flex justify-between">
       <a {{ if .Page.Content }}href="{{ .Page.RelPermalink }}"{{ else }}role="button"{{ end }} class="{{ if $current }}active{{ end }}">
@@ -36,10 +37,11 @@
       </a>
     </label>
   {{ else if .Page.Params.BookHref }}
-    <a href="{{ .Page.Params.BookHref }}" class="{{ if $current }}active{{ end }}" target="_blank" rel="noopener">
+    <a href="{{ .Page.Params.BookHref }}" class="{{ if $current }}active{{ end }} what" target="_blank" rel="noopener">
       {{- partial "docs/title" .Page -}}
     </a>
   {{ else if .Page.Content }}
+    <!-- vip -->
     <a href="{{ .Page.RelPermalink }}" class="{{ if $current }}active{{ end }}">
       {{- partial "docs/menu-title" .Page -}}
     </a>

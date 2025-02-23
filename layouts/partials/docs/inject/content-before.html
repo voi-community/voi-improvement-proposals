@@ -30,16 +30,20 @@
         <tr>
           <th>Status</th>
           {{ if $status }}
-          <td>{{ $status }}</td>
+          <td class="vip-table__status--{{ replace (replace (lower $status) " " "-") "_" "-" }}">{{ $status }}</td>
           {{ else }}
-          <td>Draft</td>
+          <td class="vip-table__status--draft">Draft</td>
           {{ end }}
         </tr>
 
         <tr>
           <th>Category</th>
           {{ if $category }}
-          <td>{{ $category }}</td>
+          <td>
+            <a href="{{ .Parent.RelPermalink }}">
+              {{ $category }}
+            </a>
+          </td>
           {{ else }}
           <td>-</td>
           {{ end }}

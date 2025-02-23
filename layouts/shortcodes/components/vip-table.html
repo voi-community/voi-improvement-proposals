@@ -1,4 +1,4 @@
-{{ $pages := where .Page.RegularPages "Type" "ne" "section" }}
+{{ $pages := sort (where .Page.RegularPages "Type" "ne" "section") ".Params.index" }}
 
 <table class="vip-table">
   <thead>
@@ -11,19 +11,27 @@
   </thead>
 
   <tbody>
-  {{ range $pages }}
-    <tr>
-      <td>
-        <a href="{{ .Permalink }}">{{ .Params.index }}</a>
-      </td>
+    {{ if gt (len $pages) 0 }}
+      {{ range $pages }}
+        <tr>
+          <td>
+            <a href="{{ .Permalink }}">{{ .Params.index }}</a>
+          </td>
 
-      <td>{{ .Title }}</td>
+          <td>{{ .Title }}</td>
 
-      <td>{{ partial "authors" (dict "authors" .Params.author) }}</td>
+          <td>{{ partial "authors" (dict "authors" .Params.author) }}</td>
 
-      <!-- convert the status to kebab-case and add as a css modifier -->
-      <td class="vip-table__status--{{ replace (replace (lower .Params.status) " " "-") "_" "-" }}">{{ .Params.status }}</td>
-    </tr>
-  {{ end }}
+          <!-- convert the status to kebab-case and add as a css modifier -->
+          <td class="vip-table__status--{{ replace (replace (lower .Params.status) " " "-") "_" "-" }}">{{ .Params.status }}</td>
+        </tr>
+      {{ end }}
+    {{ else }}
+      <tr>
+        <td class="vip-table__empty" colspan="4">
+          No VIPs found.
+        </td>
+      </tr>
+    {{ end }}
   </tbody>
 </table>

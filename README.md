@@ -144,7 +144,7 @@ Please refer to the [LICENSE][license] file.
 
 <!-- Links -->
 [contribute]: ./CONTRIBUTING.md
-[documentation]: https://vip.voi.network
+[documentation]: https://vips.voi.community
 [go-install]: https://go.dev/doc/install
 [hugo]: https://gohugo.io
 [license]: ./LICENSE

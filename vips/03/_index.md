@@ -2,8 +2,6 @@
 index: 3
 title: Application
 is_category: true
-weight: 4
-bookCollapseSection: true
 ---
 
 # {{< pages/category-title >}}

@@ -2,8 +2,6 @@
 index: 1
 title: Core
 is_category: true
-weight: 2
-bookCollapseSection: true
 ---
 
 # {{< pages/category-title >}}
