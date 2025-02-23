@@ -2,8 +2,6 @@
 index: 2
 title: Interface
 is_category: true
-weight: 3
-bookCollapseSection: true
 ---
 
 # {{< pages/category-title >}}

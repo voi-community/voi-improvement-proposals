@@ -1,4 +1,4 @@
-{{ $pages := where .Page.RegularPages "Type" "ne" "section" }}
+{{ $pages := sort (where .Page.RegularPages "Type" "ne" "section") ".Params.index" }}
 
 <table class="vip-table">
   <thead>

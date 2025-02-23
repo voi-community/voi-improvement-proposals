@@ -2,8 +2,6 @@
 index: 0
 title: Meta
 is_category: true
-weight: 1
-bookCollapseSection: true
 ---
 
 # {{< pages/category-title >}}
