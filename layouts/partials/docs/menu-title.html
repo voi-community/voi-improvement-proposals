@@ -5,7 +5,8 @@
 {{ $title := "" }}
 
 {{ if .Params.is_category }}
-{{ $title = printf "%02d: %s" .Params.index .Title }}
+{{ $pages := where .RegularPages "Type" "ne" "section" }}
+{{ $title = printf "%02d: %s (%d)" .Params.index .Title (len $pages) }}
 {{ else }}
 {{ $title = printf "%04d: %s" .Params.index .Title }} <!-- ####: Page Title -->
 {{ end }}

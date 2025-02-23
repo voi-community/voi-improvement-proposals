@@ -1,54 +1,7 @@
-$border-color: #dedede;
+@import "components";
+@import "fontawesome6";
 
-.vip-header {
-  margin-bottom: 2rem;
-}
-
-table.vip-table {
-  border: 1px solid $border-color;
-  border-collapse: collapse;
-  display: table;
-  text-align: left;
-  width: 100%;
-
-  tbody,
-  thead {
-    width: 100%;
-  }
-
-  td, th {
-    padding: 10px 15px;
-  }
-
-  th {
-    background-color: #f0f0f0;
-    border: 1px solid $border-color;
-  }
-
-  td {
-    border: 1px solid $border-color;
-    text-align: left;
-
-    &.vip-table__status {
-      &--active {
-        background-color: #dae8fc;
-      }
-
-      &--deprecated {
-        background-color: #f8cecc;
-      }
-
-      &--draft {
-        background-color: #fff2cc;
-      }
-
-      &--living {
-        background-color: #d5e8d4;
-      }
-    }
-
-    &.vip-table__empty {
-      text-align: center;
-    }
-  }
-}
+/**
+ * initialize fontawesome
+ */
+$fa-font-path: '/fontawesome6';
