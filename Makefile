@@ -3,7 +3,7 @@
 all: install
 
 build:
-	hugo
+	hugo --cleanDestinationDir
 
 install:
 	git submodule update --init --recursive
