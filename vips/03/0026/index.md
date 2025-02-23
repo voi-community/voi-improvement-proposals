@@ -208,7 +208,7 @@ The design of VCIC prioritizes compactness and efficiency while maintaining robu
 
 ## Copyright
 
-Copyright and related rights waived via [CC0](../../LICENSE).
+Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt).
 
 <!-- links -->
 [rfc4122]: https://datatracker.ietf.org/doc/html/rfc4122
