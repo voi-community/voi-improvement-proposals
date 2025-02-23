@@ -1,0 +1,52 @@
+@import "../_theme/palette";
+
+$border-color: #dedede;
+
+table.vip-table {
+  border: 1px solid $border-color;
+  border-collapse: collapse;
+  display: table;
+  text-align: left;
+  width: 100%;
+
+  tbody,
+  thead {
+    width: 100%;
+  }
+
+  td, th {
+    padding: 10px 15px;
+  }
+
+  th {
+    background-color: #f0f0f0;
+    border: 1px solid $border-color;
+  }
+
+  td {
+    border: 1px solid $border-color;
+    text-align: left;
+
+    &.vip-table__status {
+      &--active {
+        background-color: map-get($status-palette, "active");
+      }
+
+      &--deprecated {
+        background-color: map-get($status-palette, "deprecated");
+      }
+
+      &--draft {
+        background-color: map-get($status-palette, "draft");
+      }
+
+      &--living {
+        background-color: map-get($status-palette, "living");
+      }
+    }
+
+    &.vip-table__empty {
+      text-align: center;
+    }
+  }
+}
