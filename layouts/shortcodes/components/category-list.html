@@ -1,4 +1,4 @@
-{{ range .Page.Sections }}
+{{ range (sort .Page.Sections ".Params.index") }}
   {{ $pages := where .Page.RegularPages "Type" "ne" "section" }}
 
   <div class="vip-index-category">
