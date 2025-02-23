@@ -1,10 +1,8 @@
 // utils
 import createLogger from './utils/createLogger.mjs';
 
-(() => {
-  const args = process.argv.slice(2);
+const validatePrTitle = (title) => {
   const logger = createLogger();
-  const title = args[0];
   let pattern;
 
   if (!title) {
@@ -24,4 +22,6 @@ import createLogger from './utils/createLogger.mjs';
   logger.success('title is valid!');
 
   process.exit(0);
-})();
+};
+
+validatePrTitle(process.argv.slice(2)[0]);
