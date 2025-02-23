@@ -2,7 +2,7 @@
   Voi Improvement Proposals (VIP)
 </h1>
 
-### Table Of Contents
+### Table of Contents
 
 * [1. Overview](#-1-overview)
 * [2. Documentation](#-2-documentation)
