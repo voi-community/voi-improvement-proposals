@@ -3,7 +3,7 @@ index: 0
 title: VIP Purpose And Guidelines
 description: The guidelines and processes for creating a VIP.
 author: Kieran O'Neill (@kieranroneill)
-status: Draft
+status: Living
 created: 2024-09-05
 ---
 
