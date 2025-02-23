@@ -48,7 +48,7 @@ Before creating and submitting a VIP, you will need to [fork](https://github.com
 
 When you have decided on the category and the indexing of your proposed VIP, copy the [vip-template.md](./vip-template.md) into the `vips/<category>/<index>/` directory (where category is the category index and index is the VIP index).
 
-> ⚠️ **NOTE:** Your VIP index directory **MUST** use padded zeroes if your index is below 1000, e.g. if your index is 27, the directory to create will be `0027/`..
+> ⚠️ **NOTE:** Your VIP index directory **MUST** use padded zeroes if your index is below 1000, e.g. if your index is 27, the directory to create will be `0027/`.
 
 <sup>[Back to top ^][table-of-contents]</sup>
 
