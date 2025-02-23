@@ -11,7 +11,7 @@ created: 2025-02-23
 
 JSON Web Tokens (JWTs), as defined in [RFC 7519][rfc7519], provide a compact and self-contained method for securely transmitting information between parties. This specification focuses on the use of JWTs within the context of AVM accounts, which utilize Ed25519 elliptic-curve public/private key pairs for cryptographic operations.
 
-The primary objective is to establish a standard for identifying and verifying the subject of a JWT as an AVM account. This involves leveraging Ed25519 signatures to ensure the authenticity and integrity of the token. By adhering to this approach, JWTs can be effectively integrated with AVM accounts to support secure and verifiable interactions.
+The primary objective is to establish a specification for identifying and verifying the subject of a JWT as an AVM account. This involves leveraging Ed25519 signatures to ensure the authenticity and integrity of the token. By adhering to this approach, JWTs can be effectively integrated with AVM accounts to support secure and verifiable interactions.
 
 ## Motivation
 
