@@ -13,7 +13,7 @@ import createLogger from './utils/createLogger.mjs';
     process.exit(1);
   }
 
-  pattern = /^VIP-[0-9]{2}-[0-9]{4}: (\d*[A-Z][a-zA-Z0-9]*|\d+[a-zA-Z0-9]*)( (\d*[A-Z][a-zA-Z0-9]*|\d+[a-zA-Z0-9]*))*$/;
+  pattern = /^VIP-\d{2}-\d{4}: (([A-Z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?][A-Za-z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]*) ?)+$/;
 
   if (!pattern.test(title)) {
     logger.error(`title "${title}" is invalid`);
