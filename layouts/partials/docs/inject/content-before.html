@@ -30,9 +30,9 @@
         <tr>
           <th>Status</th>
           {{ if $status }}
-          <td class="vip-table__status--{{ replace (replace (lower $status) " " "-") "_" "-" }}">{{ $status }}</td>
+          <td class="vip-table__status vip-table__status--{{ replace (replace (lower $status) " " "-") "_" "-" }}">{{ $status }}</td>
           {{ else }}
-          <td class="vip-table__status--draft">Draft</td>
+          <td class="vip-table__status vip-table__status--draft">Draft</td>
           {{ end }}
         </tr>
 

@@ -1,3 +1,8 @@
+/**
+ * Gets the color mode from `localStorage`. If no color mode is stored, attempts to get the system color.
+ * @returns {'dark' | 'light'} The color stored in local storage, or the system color. If no color can be returned,
+ * defaults to `light`.
+ */
 const getColorMode = () => {
   let colorMode = 'light';
 
@@ -11,13 +16,16 @@ const getColorMode = () => {
 
   return colorMode;
 };
-const onClick = () => {
-  setColorMode(getColorMode() === 'dark' ? 'light' : 'dark');
-};
+
+/**
+ * Updates the `localStorage`, the styling (via a `data-theme` attribute on the body) and changes the styling of the
+ * color switch button.
+ * @param {'dark' | 'light' | 'auto'} colorMode - The new color mode to switch to.
+ */
 const setColorMode = (colorMode) => {
   const colorModeButtonIcon = document.getElementById('colorModeButtonIcon');
 
-  if (!colorModeButtonIcon) {
+  if (!colorModeButtonIcon || (colorMode !== 'dark' || colorMode !== 'light')) {
     return;
   }
 
@@ -25,45 +33,34 @@ const setColorMode = (colorMode) => {
     window.localStorage.setItem('colorMode', colorMode);
   } catch (_) {}
 
+  // update the styles
+  window.document.body.setAttribute('data-theme', colorMode);
+
   if (colorMode === 'dark') {
     colorModeButtonIcon.classList.remove('bi-brightness-high');
     colorModeButtonIcon.classList.add('bi-moon');
-    window.document.documentElement
-    window.document.documentElement.style.setProperty('--gray-100', 'rgba(255, 255, 255, 0.1)');
-    window.document.documentElement.style.setProperty('--gray-200', 'rgba(255, 255, 255, 0.2)');
-    window.document.documentElement.style.setProperty('--gray-500', 'rgba(255, 255, 255, 0.5)');
-    window.document.documentElement.style.setProperty('--color-link', '#84b2ff');
-    window.document.documentElement.style.setProperty('--color-visited-link', '#b88dff');
-    window.document.documentElement.style.setProperty('--body-background', '#343a40');
-    window.document.documentElement.style.setProperty('--body-font-color', '#e9ecef');
-    window.document.documentElement.style.setProperty('--icon-filter', 'brightness(0) invert(1)');
 
     return;
   }
 
-  colorModeButtonIcon.classList.remove('bi-moon');
-  colorModeButtonIcon.classList.add('bi-brightness-high');
-  window.document.documentElement.style.setProperty('--gray-100', '#f8f9fa');
-  window.document.documentElement.style.setProperty('--gray-200', '#e9ecef');
-  window.document.documentElement.style.setProperty('--gray-500', '#adb5bd');
-  window.document.documentElement.style.setProperty('--color-link', '#0055bb');
-  window.document.documentElement.style.setProperty('--color-visited-link', '#8440f1');
-  window.document.documentElement.style.setProperty('--body-background', 'white');
-  window.document.documentElement.style.setProperty('--body-font-color', 'black');
-  window.document.documentElement.style.setProperty('--icon-filter', 'none');
+  if (colorMode === 'light') {
+    colorModeButtonIcon.classList.remove('bi-moon');
+    colorModeButtonIcon.classList.add('bi-brightness-high');
+  }
 };
 
 window.addEventListener('DOMContentLoaded', () => {
   const colorModeButton = document.getElementById('colorModeButton');
-  const colorModeButtonIcon = document.getElementById('colorModeButtonIcon');
   let colorMode
 
-  if (!colorModeButtonIcon) {
+  if (!colorModeButton) {
     return;
   }
 
   colorMode = getColorMode();
 
   setColorMode(colorMode);
-  colorModeButton.addEventListener('click', onClick);
+
+  // add click handler to set the color mode based on the stored one.
+  colorModeButton.addEventListener('click', () => setColorMode(getColorMode() === 'light' ? 'dark' : 'light'));
 });
