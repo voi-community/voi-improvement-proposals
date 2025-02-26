@@ -19,7 +19,7 @@ table.vip-table {
   }
 
   th {
-    background-color: #f0f0f0;
+    background-color: var(--gray-100);
     border: 1px solid $border-color;
   }
 
@@ -28,6 +28,8 @@ table.vip-table {
     text-align: left;
 
     &.vip-table__status {
+      color: #000000;
+
       &--active {
         background-color: map-get($status-palette, "active");
       }

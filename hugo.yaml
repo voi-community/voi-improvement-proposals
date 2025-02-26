@@ -2,6 +2,7 @@ baseURL: https://vips.voi.community/
 contentDir: vips
 languageCode: en-us
 params:
+  BookTheme: 'auto'
   BookSection: '*'
   subtitle: A set of proposals that describe technical specifications for the Voi community.
   githubLink: https://github.com/voi-community/voi-improvement-proposals

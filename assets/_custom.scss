@@ -1,2 +1,23 @@
 @import "components";
-@import "fontawesome6";
+
+body[data-theme="dark"] {
+  --body-background: #343a40;
+  --body-font-color: #e9ecef;
+  --color-link: #84b2ff;
+  --color-visited-link: #b88dff;
+  --gray-100: rgba(255, 255, 255, 0.1);
+  --gray-200: rgba(255, 255, 255, 0.2);
+  --gray-500: rgba(255, 255, 255, 0.5);
+  --icon-filter: brightness(0) invert(1);
+}
+
+body[data-theme="light"] {
+  --body-background: #ffffff;
+  --body-font-color: #000000;
+  --color-link: #0055bb;
+  --color-visited-link: #8440f1;
+  --gray-100: #f8f9fa;
+  --gray-200: #e9ecef;
+  --gray-500: #adb5bd;
+  --icon-filter: none;
+}
