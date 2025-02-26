@@ -25,7 +25,7 @@ const getColorMode = () => {
 const setColorMode = (colorMode) => {
   const colorModeButtonIcon = document.getElementById('colorModeButtonIcon');
 
-  if (!colorModeButtonIcon || (colorMode !== 'dark' || colorMode !== 'light')) {
+  if (!colorModeButtonIcon || (colorMode !== 'dark' && colorMode !== 'light')) {
     return;
   }
 
