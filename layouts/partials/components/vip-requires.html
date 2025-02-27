@@ -1,0 +1,21 @@
+{{ $requireList := split .requires "," }}
+{{ $numVIPS := len $requireList }}
+{{ range $index, $vip := $requireList }}
+  {{ $pattern := `^VIP-(\d{2})-(\d{4})$` }}
+  {{ $matches := findRE $pattern $vip }}
+
+  <!-- if we have a match, it should be the first item of the $matches list -->
+  {{ if gt (len $matches) 0 }}
+    <!-- extract the category/index from their capturing groups (elements in the regex pattern surrounding by parentheses) and remove the padded zeroes to get the integer -->
+    {{ $category := replaceRE "^0+" "" (replaceRE $pattern `$1` $vip) }}
+    {{ $vipIndex := replaceRE "^0+" "" (replaceRE $pattern `$2` $vip) }}
+
+    <!-- add a comma unless it's the last item -->
+    {{ $comma := "" }}
+    {{ if lt $index (sub $numVIPS 1) }}
+      {{ $comma = printf "<span>,</span>" | safeHTML }}
+    {{ end }}
+
+    <a href="{{ printf "/%02s/%04s" $category $vipIndex }}">{{ $vip }}</a>{{ $comma }}
+  {{ end }}
+{{ end }}
