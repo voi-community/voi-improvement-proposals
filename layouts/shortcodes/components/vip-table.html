@@ -20,7 +20,7 @@
 
           <td>{{ .Title }}</td>
 
-          <td>{{ partial "authors" (dict "authors" .Params.author) }}</td>
+          <td>{{ partial "components/vip-authors" (dict "authors" .Params.author) }}</td>
 
           <!-- convert the status to kebab-case and add as a css modifier -->
           <td class="vip-table__status vip-table__status--{{ replace (replace (lower .Params.status) " " "-") "_" "-" }}">{{ .Params.status }}</td>
