@@ -6,7 +6,7 @@ author: <A comma separated list of the author's or authors' name + GitHub userna
 status: Draft # Required.
 created: <The date the VIP was created on, in ISO 8601 (yyyy-mm-dd) format.> # Required.
 discussion_to: <A URL to where for the discussion of this VIP.> # Optional, but recommended.
-requires: <VIP reference(s).> # Only required when you reference a VIP in the `Specification` section. Otherwise, remove this field.
+requires: <VIP reference(s).> # Optional, only required when you reference a VIP in the `Specification` section. Otherwise, remove this field. Each referenced VIP **MUST* use the VIP's full notation and be in the format "VIP-XX-XXXX" with padded zeroes if necessary. If there is more than one VIP to reference, use a comma to separate them, e.g. VIP-03-0026,VIP-01-0001
 ---
 
 <!--

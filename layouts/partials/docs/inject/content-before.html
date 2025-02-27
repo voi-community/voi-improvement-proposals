@@ -3,6 +3,7 @@
 {{ $created := .Page.Params.created }}
 {{ $discussion_to := .Page.Params.discussion_to }}
 {{ $index := .Page.Params.index }}
+{{ $requires := .Page.Params.requires }}
 {{ $status := .Page.Params.status }}
 
 {{ if not .Page.Params.is_category }} <!-- exclude category files -->
@@ -20,7 +21,7 @@
           <th>Author(s)</th>
           {{ if $authors }}
             <td>
-              {{ partial "authors" (dict "authors" $authors) }}
+              {{ partial "components/vip-authors" (dict "authors" $authors) }}
             </td>
           {{ else }}
             <td>-</td>
@@ -63,6 +64,15 @@
           <th>Discussion To</th>
           <td>
             <a class="vip-header__link" href="{{ $discussion_to }}" target="_blank">{{ $discussion_to }}</a>
+          </td>
+        </tr>
+        {{ end }}
+
+        {{ if $requires }}
+        <tr>
+          <th>Requires</th>
+          <td>
+            {{ partial "components/vip-requires" (dict "requires" $requires) }}
           </td>
         </tr>
         {{ end }}
