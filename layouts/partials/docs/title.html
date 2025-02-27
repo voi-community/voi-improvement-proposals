@@ -3,6 +3,8 @@
   Accepts Page as context
 -->
 {{ $title := "" }}
+{{ $prefix := "" }}
+{{ $suffix := "" }}
 
 {{ if .LinkTitle }}
   {{ $title = .LinkTitle }}
@@ -14,8 +16,16 @@
   {{ $title = .File.BaseFileName | humanize | title }}
 {{ end }}
 
+{{ if .Page.Params.is_category }}
+  {{ $pages := where .Page.RegularPages "Type" "ne" "section" }}
+  {{ $prefix = printf "%02d-" .Page.Params.index }}
+  {{ $suffix = printf " (%d)" (len $pages)  }}
+{{ else if isset .Page.Params "index" }}
+  {{ $prefix = printf "VIP-%02d-%04d: " .Parent.Params.index .Page.Params.index }}
+{{ end }}
+
 {{ if eq .Site.Title $title }}
   {{ printf "%s | %s" .Site.Title "Voi Community"  }}
 {{ else }}
-  {{ printf "%s | %s | %s" $title .Site.Title "Voi Community"  }}
+  {{ printf "%s%s%s | %s | %s" $prefix $title $suffix .Site.Title "Voi Community"  }}
 {{ end }}
