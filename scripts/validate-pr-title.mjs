@@ -11,7 +11,7 @@ const validatePrTitle = (title) => {
     process.exit(1);
   }
 
-  pattern = /^VIP-\d{2}-\d{4}: (([A-Z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?][A-Za-z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]*) ?)+$/;
+  pattern = /^VIP-\d{2}-\d{4}: ([\x20-\x7E]+)+$/;
 
   if (!pattern.test(title)) {
     logger.error(`title "${title}" is invalid`);
